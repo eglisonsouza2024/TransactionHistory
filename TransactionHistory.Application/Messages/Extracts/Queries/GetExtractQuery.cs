@@ -1,4 +1,5 @@
-﻿using TransactionHistory.Core.Mediator.Messages;
+﻿using TransactionHistory.Application.Messages.Extracts.Models.Enums;
+using TransactionHistory.Core.Mediator.Messages;
 
 namespace TransactionHistory.Application.Messages.Extracts.Queries
 {
@@ -6,11 +7,11 @@ namespace TransactionHistory.Application.Messages.Extracts.Queries
     {
         public int Size { get; set; }
         public int Index { get; set; }
-        public DateTime DateFilter { get; set; }
+        public FilterExtract DateFilter { get; set; }
         public Guid AccountId { get; set; }
 
 
-        public GetExtractQuery(DateTime dateFilter, Guid accountId, int size = 10, int index = 0)
+        public GetExtractQuery(FilterExtract dateFilter, Guid accountId, int size = 10, int index = 0)
         {
             Size = size;
             Index = index;

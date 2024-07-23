@@ -25,7 +25,8 @@ namespace TransactionHistory.Infra.Persistence.Repositories
         public async Task<PageResult<Transaction>> GetAllAsync(int size, int index, DateTime dateFilter, Guid accountId, CancellationToken cancellationToken)
         {
             var transactions = _dbContext.Transaction
-                .Where(x => x.AccountId.Equals(accountId) && x.TransactionDate >= dateFilter);
+                .Where(x => x.AccountId.Equals(accountId) && x.TransactionDate >= dateFilter)
+                .OrderByDescending(x => x.TransactionDate);
 
             var count = await transactions.CountAsync(cancellationToken);
 

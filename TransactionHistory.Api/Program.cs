@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using TransactionHistory.Application.Extensions;
 using TransactionHistory.Infra.Extensions;
 
@@ -6,7 +7,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services
     .AddAplication()
     .AddInfrastructure(builder.Configuration)
-    .AddControllers();
+    .AddControllers()
+    .AddJsonOptions(options =>
+        options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()));
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

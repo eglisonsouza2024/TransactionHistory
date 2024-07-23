@@ -15,4 +15,8 @@
     <ProjectReference Include="..\TransactionHistory.Domain\TransactionHistory.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Messages\Extracts\Models\Outputs\" />
+  </ItemGroup>
+
 </Project>
