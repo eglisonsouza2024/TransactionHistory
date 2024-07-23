@@ -9,5 +9,20 @@
         public int TotalPages { get; set; }
         public bool HasNextPage { get; set; }
         public bool HasPreviousPage { get; set; }
+
+        public void SetTotalPages()
+        {
+            TotalPages = TotalResults / PageSize;
+        }
+
+        public void SetHasNextPage()
+        {
+            HasNextPage = TotalPages > PageIndex;
+        }
+
+        public void SetHasPreviousPage()
+        {
+            HasPreviousPage = PageIndex > 1;
+        }
     }
 }

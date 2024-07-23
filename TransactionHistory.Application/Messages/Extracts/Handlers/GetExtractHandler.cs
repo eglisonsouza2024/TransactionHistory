@@ -1,9 +1,10 @@
 ﻿using MediatR;
 using TransactionHistory.Application.Messages.Extracts.Models;
-using TransactionHistory.Application.Messages.Extracts.Models.Enums;
 using TransactionHistory.Application.Messages.Extracts.Queries;
 using TransactionHistory.Core.Results;
+using TransactionHistory.Domain.Entities;
 using TransactionHistory.Domain.Repository;
+using TransactionHistory.Domain.Repository.Args;
 
 namespace TransactionHistory.Application.Messages.Extracts.Handlers
 {
@@ -18,32 +19,37 @@ namespace TransactionHistory.Application.Messages.Extracts.Handlers
 
         public async Task<CustomResult> Handle(GetExtractQuery request, CancellationToken cancellationToken)
         {
-            var result = await _repository.GetAllAsync(request.Size, request.Index, GetDayBase(request.DateFilter), request.AccountId, cancellationToken);
+            var extractArgs = BuildExtractArgs(request);
 
-            var pageResult = new PageResult<ExtractOutputModel>
-            {
-                Items = result.Items!.Select(x => new ExtractOutputModel(x.TransactionDate.ToString("dd/MM/yyyy"), x.TransactionType, x.Amount)),
-                TotalResults = result.TotalResults,
-                PageIndex = result.PageIndex,
-                PageSize = result.PageSize,
-                TotalPages = result.TotalPages,
-                HasNextPage = result.HasNextPage,
-                HasPreviousPage = result.HasPreviousPage
-            };
+            var result = await _repository.GetAllAsync(extractArgs, cancellationToken);
+            
+            var pageResult = BuildPageResult(result);
 
             return CustomResult.Success(pageResult);
         }
 
-        private DateTime GetDayBase(FilterExtract dateFilter)
+        private static PageResult<ExtractOutputModel> BuildPageResult(PageResult<Transaction> result)
         {
-            return dateFilter switch
-            {
-                FilterExtract.FiveDays => DateTime.Now.AddDays(-5),
-                FilterExtract.TenDays => DateTime.Now.AddDays(-10),
-                FilterExtract.FifteenDays => DateTime.Now.AddDays(-15),
-                FilterExtract.TwentyDays => DateTime.Now.AddDays(-20),
-                _ => DateTime.Now,
-            };
+            return new PageResultBuild<ExtractOutputModel>()
+                .BuildItems(result.Items!.Select(x => new ExtractOutputModel(x.TransactionDate.ToString("dd/MM"), x.TransactionType, x.Amount)))
+                .BuildTotalResults(result.TotalResults)
+                .BuildPageIndex(result.PageIndex)
+                .BuildPageSize(result.PageSize)
+                .BuildTotalPages()
+                .BuildHasNextPage()
+                .BuildHasPreviousPage()
+                .Build();
         }
+
+        private static GetExtractArgs BuildExtractArgs(GetExtractQuery request)
+        {
+            return new GetExtractArgsBuild()
+                .BuildIndex(request.Index)
+                .BuildSize(request.Size)
+                .BuildAccountId(request.AccountId)
+                .BuildDateFilter(request.GetDayFilter())
+                .Build();
+        }
+
     }
 }

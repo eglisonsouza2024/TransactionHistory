@@ -19,17 +19,16 @@ namespace TransactionHistory.Application.Messages.Extracts.Queries
             AccountId = accountId;
         }
 
-        private void Validate()
+        public DateTime GetDayFilter()
         {
-            if (Size < 0)
+            return DateFilter switch
             {
-
-            }
-
-            if (Index < 0)
-            {
-
-            }
+                FilterExtract.FiveDays => DateTime.Now.AddDays(-5),
+                FilterExtract.TenDays => DateTime.Now.AddDays(-10),
+                FilterExtract.FifteenDays => DateTime.Now.AddDays(-15),
+                FilterExtract.TwentyDays => DateTime.Now.AddDays(-20),
+                _ => DateTime.Now,
+            };
         }
     }
 }

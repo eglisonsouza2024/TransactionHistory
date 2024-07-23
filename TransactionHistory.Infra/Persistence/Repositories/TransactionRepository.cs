@@ -3,6 +3,7 @@ using TransactionHistory.Core.Data;
 using TransactionHistory.Core.Results;
 using TransactionHistory.Domain.Entities;
 using TransactionHistory.Domain.Repository;
+using TransactionHistory.Domain.Repository.Args;
 
 namespace TransactionHistory.Infra.Persistence.Repositories
 {
@@ -22,29 +23,28 @@ namespace TransactionHistory.Infra.Persistence.Repositories
             _dbContext?.Dispose();
         }
 
-        public async Task<PageResult<Transaction>> GetAllAsync(int size, int index, DateTime dateFilter, Guid accountId, CancellationToken cancellationToken)
+        public async Task<PageResult<Transaction>> GetAllAsync(GetExtractArgs getExtractArgs, CancellationToken cancellationToken)
         {
             var transactions = _dbContext.Transaction
-                .Where(x => x.AccountId.Equals(accountId) && x.TransactionDate >= dateFilter)
+                .Where(x => x.AccountId.Equals(getExtractArgs.AccountId) && x.TransactionDate >= getExtractArgs.DateFilter)
                 .OrderByDescending(x => x.TransactionDate);
 
             var count = await transactions.CountAsync(cancellationToken);
 
             var result = transactions
                 .AsNoTracking()
-                .Skip(index)
-                .Take(size);
+                .Skip(getExtractArgs.Index)
+                .Take(getExtractArgs.Size);
 
-            return new PageResult<Transaction>
-            {
-                Items = result,
-                TotalResults = count,
-                PageIndex = index,
-                PageSize = size,
-                TotalPages = count / size,
-                HasNextPage = count / size > index,
-                HasPreviousPage = index > 1,
-            };
+            return new PageResultBuild<Transaction>()
+                .BuildItems(result)
+                .BuildTotalResults(count)
+                .BuildPageIndex(getExtractArgs.Index)
+                .BuildPageSize(getExtractArgs.Size)
+                .BuildTotalPages()
+                .BuildHasNextPage()
+                .BuildHasPreviousPage()
+                .Build();
         }
     }
 }
