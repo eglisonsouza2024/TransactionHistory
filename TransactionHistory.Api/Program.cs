@@ -1,8 +1,10 @@
+using TransactionHistory.Application.Extensions;
 using TransactionHistory.Infra.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services
+    .AddAplication()
     .AddInfrastructure(builder.Configuration)
     .AddControllers();
 

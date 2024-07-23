@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35013.160
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransactionHistory.Api", "TransactionHistory.Api\TransactionHistory.Api.csproj", "{1C2FB14C-FAA6-4ECE-A63D-3F49BC22587A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TransactionHistory.Api", "TransactionHistory.Api\TransactionHistory.Api.csproj", "{1C2FB14C-FAA6-4ECE-A63D-3F49BC22587A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransactionHistory.Domain", "TransactionHistory.Domain\TransactionHistory.Domain.csproj", "{1CD21C10-88C8-4C67-ADE3-A7FE370C091D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TransactionHistory.Domain", "TransactionHistory.Domain\TransactionHistory.Domain.csproj", "{1CD21C10-88C8-4C67-ADE3-A7FE370C091D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransactionHistory.Core", "TransactionHistory.Core\TransactionHistory.Core.csproj", "{FC3E53C8-A1CA-4E77-971F-FABBD730D492}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TransactionHistory.Core", "TransactionHistory.Core\TransactionHistory.Core.csproj", "{FC3E53C8-A1CA-4E77-971F-FABBD730D492}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransactionHistory.Infra", "TransactionHistory.Infra\TransactionHistory.Infra.csproj", "{638C9229-6507-4ED7-871F-6187842604FF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TransactionHistory.Infra", "TransactionHistory.Infra\TransactionHistory.Infra.csproj", "{638C9229-6507-4ED7-871F-6187842604FF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransactionHistory.Application", "TransactionHistory.Application\TransactionHistory.Application.csproj", "{A491219C-0E7B-43F6-A065-51A1F397451A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{638C9229-6507-4ED7-871F-6187842604FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{638C9229-6507-4ED7-871F-6187842604FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{638C9229-6507-4ED7-871F-6187842604FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A491219C-0E7B-43F6-A065-51A1F397451A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A491219C-0E7B-43F6-A065-51A1F397451A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A491219C-0E7B-43F6-A065-51A1F397451A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A491219C-0E7B-43F6-A065-51A1F397451A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

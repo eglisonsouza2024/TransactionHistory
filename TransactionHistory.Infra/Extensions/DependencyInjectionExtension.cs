@@ -1,7 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using TransactionHistory.Domain.Repository;
 using TransactionHistory.Infra.Persistence;
+using TransactionHistory.Infra.Persistence.Repositories;
 
 namespace TransactionHistory.Infra.Extensions
 {
@@ -13,6 +15,8 @@ namespace TransactionHistory.Infra.Extensions
                 options.UseSqlServer(
                     configuration.GetConnectionString("TransactionHistoryContext"),
                     b => b.MigrationsAssembly(typeof(TransactionHistoryDbContext).Assembly.FullName)));
+
+            services.AddScoped<ITransactionRepository, TransactionRepository>();
 
             return services;
         }

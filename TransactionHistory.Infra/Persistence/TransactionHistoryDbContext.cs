@@ -1,10 +1,16 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using TransactionHistory.Core.Data;
 using TransactionHistory.Core.DomainObjects;
+using TransactionHistory.Domain.Entities;
 
 namespace TransactionHistory.Infra.Persistence
 {
-    public class TransactionHistoryDbContext : DbContext
+    public class TransactionHistoryDbContext : DbContext, IUnitOfWork
     {
+        public DbSet<Person> Person { get; set; }
+        public DbSet<Account> Account { get; set; }
+        public DbSet<Transaction> Transaction { get; set; }
+
         public TransactionHistoryDbContext(DbContextOptions options) : base(options)
         {
         }
