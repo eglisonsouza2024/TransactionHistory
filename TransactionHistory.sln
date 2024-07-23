@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransactionHistory.Domain",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransactionHistory.Core", "TransactionHistory.Core\TransactionHistory.Core.csproj", "{FC3E53C8-A1CA-4E77-971F-FABBD730D492}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransactionHistory.Infra", "TransactionHistory.Infra\TransactionHistory.Infra.csproj", "{638C9229-6507-4ED7-871F-6187842604FF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{FC3E53C8-A1CA-4E77-971F-FABBD730D492}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FC3E53C8-A1CA-4E77-971F-FABBD730D492}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FC3E53C8-A1CA-4E77-971F-FABBD730D492}.Release|Any CPU.Build.0 = Release|Any CPU
+		{638C9229-6507-4ED7-871F-6187842604FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{638C9229-6507-4ED7-871F-6187842604FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{638C9229-6507-4ED7-871F-6187842604FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{638C9229-6507-4ED7-871F-6187842604FF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
