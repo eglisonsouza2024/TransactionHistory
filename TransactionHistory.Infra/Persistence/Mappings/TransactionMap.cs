@@ -12,6 +12,15 @@ namespace TransactionHistory.Infra.Persistence.Mappings
                 .HasKey(x => x.Id);
 
             builder
+                .Property(x => x.CreatedAt)
+                .IsRequired()
+                .HasColumnType("Datetime");
+
+            builder
+                .Property(x => x.UpdatedAt)
+                .HasColumnType("Datetime");
+
+            builder
                 .Property(x => x.TransactionDate)
                 .IsRequired()
                 .HasColumnName("TransactionDate")
@@ -29,7 +38,9 @@ namespace TransactionHistory.Infra.Persistence.Mappings
                 .HasColumnName("Amount")
                 .HasColumnType("decimal(20,2)");
 
-            builder.HasOne(x => x.Account);
+            builder
+                .HasOne(x => x.Account)
+                .WithMany(x => x.Transactions);
         }
     }
 }

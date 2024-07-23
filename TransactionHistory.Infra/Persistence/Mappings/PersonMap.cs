@@ -10,14 +10,22 @@ namespace TransactionHistory.Infra.Persistence.Mappings
         {
             builder.HasKey(x => x.Id);
 
+            builder
+                .Property(x => x.CreatedAt)
+                .IsRequired()
+                .HasColumnType("Datetime");
+
+            builder
+                .Property(x => x.UpdatedAt)
+                .HasColumnType("Datetime");
+
             builder.Property(x => x.Name)
                 .IsRequired()
-                .HasColumnType("varchar(100)")
-                .HasColumnName("Name");
+                .HasColumnType("varchar(100)");
 
-            //builder.HasOne(x => x.Account)
-            //    .WithOne(x => x.Person);
-            //.HasForeignKey();
+            builder.HasOne(x => x.Account)
+                .WithOne(x => x.Person)
+                .HasForeignKey<Account>(x => x.PersonId);
         }
     }
 }

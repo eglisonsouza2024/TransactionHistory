@@ -12,7 +12,20 @@ namespace TransactionHistory.Infra.Persistence.Mappings
                 .HasKey(x => x.Id);
 
             builder
-                .HasOne(x => x.Person);
+                .Property(x => x.CreatedAt)
+                .IsRequired()
+                .HasColumnType("Datetime");
+
+            builder
+                .Property(x => x.UpdatedAt)
+                .HasColumnType("Datetime");
+
+            builder
+                .HasOne(x => x.Person)
+                .WithOne(x => x.Account)
+                .HasForeignKey<Account>(x => x.PersonId);
+
+
         }
     }
 }

@@ -12,8 +12,8 @@ using TransactionHistory.Infra.Persistence;
 namespace TransactionHistory.Infra.Migrations
 {
     [DbContext(typeof(TransactionHistoryDbContext))]
-    [Migration("20240723135411_Transaction")]
-    partial class Transaction
+    [Migration("20240723143620_InitialMigration")]
+    partial class InitialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -32,17 +32,18 @@ namespace TransactionHistory.Infra.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("Datetime");
 
                     b.Property<Guid>("PersonId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("datetime2");
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("Datetime");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("PersonId");
+                    b.HasIndex("PersonId")
+                        .IsUnique();
 
                     b.ToTable("Account");
                 });
@@ -54,15 +55,14 @@ namespace TransactionHistory.Infra.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("Datetime");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("varchar(100)")
-                        .HasColumnName("Name");
+                        .HasColumnType("varchar(100)");
 
-                    b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("datetime2");
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("Datetime");
 
                     b.HasKey("Id");
 
@@ -83,10 +83,7 @@ namespace TransactionHistory.Infra.Migrations
                         .HasColumnName("Amount");
 
                     b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid>("IdAccount")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("Datetime");
 
                     b.Property<DateTime>("TransactionDate")
                         .HasColumnType("Datetime")
@@ -96,8 +93,8 @@ namespace TransactionHistory.Infra.Migrations
                         .HasColumnType("int")
                         .HasColumnName("TransactionType");
 
-                    b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("datetime2");
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("Datetime");
 
                     b.HasKey("Id");
 
@@ -109,8 +106,8 @@ namespace TransactionHistory.Infra.Migrations
             modelBuilder.Entity("TransactionHistory.Domain.Entities.Account", b =>
                 {
                     b.HasOne("TransactionHistory.Domain.Entities.Person", "Person")
-                        .WithMany()
-                        .HasForeignKey("PersonId")
+                        .WithOne("Account")
+                        .HasForeignKey("TransactionHistory.Domain.Entities.Account", "PersonId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -120,11 +117,21 @@ namespace TransactionHistory.Infra.Migrations
             modelBuilder.Entity("TransactionHistory.Domain.Entities.Transaction", b =>
                 {
                     b.HasOne("TransactionHistory.Domain.Entities.Account", "Account")
-                        .WithMany()
+                        .WithMany("Transactions")
                         .HasForeignKey("AccountId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.Navigation("Account");
+                });
+
+            modelBuilder.Entity("TransactionHistory.Domain.Entities.Account", b =>
+                {
+                    b.Navigation("Transactions");
+                });
+
+            modelBuilder.Entity("TransactionHistory.Domain.Entities.Person", b =>
+                {
                     b.Navigation("Account");
                 });
 #pragma warning restore 612, 618
