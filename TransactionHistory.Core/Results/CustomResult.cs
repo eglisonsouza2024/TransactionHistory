@@ -3,18 +3,17 @@
     public class CustomResult
     {
         public bool IsSuccess { get; set; }
-        public string Message { get; set; }
         public string[]? Errors { get; set; }
         public object? Data { get; set; }
 
-        public static CustomResult Success(string message, object? data = null)
+        public static CustomResult Success(object? data = null)
         {
-            return new CustomResult { IsSuccess = true, Message = message, Data = data };
+            return new CustomResult { IsSuccess = true, Data = data };
         }
 
-        public static CustomResult Fail(string message, string[]? errors = null)
+        public static CustomResult Fail(string[]? errors = null)
         {
-            return new CustomResult { IsSuccess = false, Message = message, Errors = errors };
+            return new CustomResult { IsSuccess = false, Errors = errors };
         }
     }
 }

@@ -31,7 +31,7 @@ namespace TransactionHistory.Application.Messages.Extracts.Handlers
                 HasPreviousPage = result.HasPreviousPage
             };
 
-            return CustomResult.Success("", pageResult);
+            return CustomResult.Success(pageResult);
         }
 
         private DateTime GetDayBase(FilterExtract dateFilter)
