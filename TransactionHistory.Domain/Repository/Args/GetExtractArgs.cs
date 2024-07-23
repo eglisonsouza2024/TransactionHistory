@@ -1,6 +1,6 @@
 ﻿namespace TransactionHistory.Domain.Repository.Args
 {
-    public class GetExtractArgs
+    public sealed class GetExtractArgs
     {
         public int Size { get; set; }
         public int Index { get; set; }

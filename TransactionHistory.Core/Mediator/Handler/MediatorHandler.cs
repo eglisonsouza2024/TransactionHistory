@@ -4,7 +4,7 @@ using TransactionHistory.Core.Results;
 
 namespace TransactionHistory.Core.Mediator.Handler
 {
-    public class MediatorHandler : IMediatorHandler
+    public sealed class MediatorHandler : IMediatorHandler
     {
         private readonly IMediator _mediator;
 

@@ -1,6 +1,6 @@
 ﻿namespace TransactionHistory.Core.Results
 {
-    public class PageResultBuild<T> where T : class
+    public sealed class PageResultBuild<T> where T : class
     {
         private readonly PageResult<T> _pageResult = new();
 

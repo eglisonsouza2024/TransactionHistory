@@ -7,7 +7,7 @@ using TransactionHistory.Domain.Repository.Args;
 
 namespace TransactionHistory.Infra.Persistence.Repositories
 {
-    internal class TransactionRepository : ITransactionRepository
+    public sealed class TransactionRepository : ITransactionRepository
     {
         private readonly TransactionHistoryDbContext _dbContext;
 

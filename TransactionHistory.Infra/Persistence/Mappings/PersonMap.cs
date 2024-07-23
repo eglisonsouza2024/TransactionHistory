@@ -4,7 +4,7 @@ using TransactionHistory.Domain.Entities;
 
 namespace TransactionHistory.Infra.Persistence.Mappings
 {
-    public class PersonMap : IEntityTypeConfiguration<Person>
+    public sealed class PersonMap : IEntityTypeConfiguration<Person>
     {
         public void Configure(EntityTypeBuilder<Person> builder)
         {

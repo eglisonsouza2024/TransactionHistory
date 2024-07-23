@@ -9,7 +9,7 @@ namespace TransactionHistory.Api.Controllers.V1
 {
     [ApiController]
     [Route("api/v1/extracts")]
-    public class ExtractsController : ControllerBase
+    public sealed class ExtractsController : ControllerBase
     {
         private readonly IMediatorHandler _mediator;
 

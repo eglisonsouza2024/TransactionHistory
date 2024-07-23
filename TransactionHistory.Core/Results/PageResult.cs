@@ -1,6 +1,6 @@
 ﻿namespace TransactionHistory.Core.Results
 {
-    public class PageResult<T> where T : class
+    public sealed class PageResult<T> where T : class
     {
         public IEnumerable<T>? Items { get; set; }
         public int TotalResults { get; set; }

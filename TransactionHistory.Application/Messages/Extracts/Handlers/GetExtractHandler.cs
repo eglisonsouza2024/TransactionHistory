@@ -1,5 +1,5 @@
 ﻿using MediatR;
-using TransactionHistory.Application.Messages.Extracts.Models;
+using TransactionHistory.Application.Messages.Extracts.Models.Outputs;
 using TransactionHistory.Application.Messages.Extracts.Queries;
 using TransactionHistory.Core.Results;
 using TransactionHistory.Domain.Entities;
@@ -8,7 +8,7 @@ using TransactionHistory.Domain.Repository.Args;
 
 namespace TransactionHistory.Application.Messages.Extracts.Handlers
 {
-    public class GetExtractHandler : IRequestHandler<GetExtractQuery, CustomResult>
+    public sealed class GetExtractHandler : IRequestHandler<GetExtractQuery, CustomResult>
     {
         private readonly ITransactionRepository _repository;
 
@@ -22,7 +22,7 @@ namespace TransactionHistory.Application.Messages.Extracts.Handlers
             var extractArgs = BuildExtractArgs(request);
 
             var result = await _repository.GetAllAsync(extractArgs, cancellationToken);
-            
+
             var pageResult = BuildPageResult(result);
 
             return CustomResult.Success(pageResult);

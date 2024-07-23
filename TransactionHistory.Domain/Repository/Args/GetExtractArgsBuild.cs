@@ -1,6 +1,6 @@
 ﻿namespace TransactionHistory.Domain.Repository.Args
 {
-    public class GetExtractArgsBuild
+    public sealed class GetExtractArgsBuild
     {
         private readonly GetExtractArgs _getExtractArgs = new();
 

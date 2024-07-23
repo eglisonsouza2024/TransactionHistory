@@ -3,7 +3,7 @@ using TransactionHistory.Core.Mediator.Messages;
 
 namespace TransactionHistory.Application.Messages.Extracts.Queries
 {
-    public class GetExtractQuery : Command
+    public sealed class GetExtractQuery : Command
     {
         public int Size { get; set; }
         public int Index { get; set; }

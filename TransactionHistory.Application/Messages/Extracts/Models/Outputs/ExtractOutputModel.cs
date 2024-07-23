@@ -1,8 +1,8 @@
 ﻿using TransactionHistory.Domain.Enums;
 
-namespace TransactionHistory.Application.Messages.Extracts.Models
+namespace TransactionHistory.Application.Messages.Extracts.Models.Outputs
 {
-    public class ExtractOutputModel
+    public sealed class ExtractOutputModel
     {
         public string TransactionDate { get; set; }
         public TransactionType TransactionType { get; set; }

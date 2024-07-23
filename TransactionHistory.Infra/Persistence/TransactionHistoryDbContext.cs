@@ -5,7 +5,7 @@ using TransactionHistory.Domain.Entities;
 
 namespace TransactionHistory.Infra.Persistence
 {
-    public class TransactionHistoryDbContext : DbContext, IUnitOfWork
+    public sealed class TransactionHistoryDbContext : DbContext, IUnitOfWork
     {
         public DbSet<Person> Person { get; set; }
         public DbSet<Account> Account { get; set; }
