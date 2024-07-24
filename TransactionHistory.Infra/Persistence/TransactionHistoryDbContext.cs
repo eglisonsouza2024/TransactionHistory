@@ -1,10 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Diagnostics.CodeAnalysis;
 using TransactionHistory.Core.Data;
 using TransactionHistory.Core.DomainObjects;
 using TransactionHistory.Domain.Entities;
 
 namespace TransactionHistory.Infra.Persistence
 {
+    [ExcludeFromCodeCoverage]
     public sealed class TransactionHistoryDbContext : DbContext, IUnitOfWork
     {
         public DbSet<Person> Person { get; set; }

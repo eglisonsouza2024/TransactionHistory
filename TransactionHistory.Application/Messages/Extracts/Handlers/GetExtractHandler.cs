@@ -50,6 +50,5 @@ namespace TransactionHistory.Application.Messages.Extracts.Handlers
                 .BuildDateFilter(request.GetDayFilter())
                 .Build();
         }
-
     }
 }

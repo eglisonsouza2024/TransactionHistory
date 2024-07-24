@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics.CodeAnalysis;
 using System.Net;
 using TransactionHistory.Application.Messages.Extracts.Models.Enums;
 using TransactionHistory.Application.Messages.Extracts.Queries;
@@ -7,6 +8,7 @@ using TransactionHistory.Core.Results;
 
 namespace TransactionHistory.Api.Controllers.V1
 {
+    [ExcludeFromCodeCoverage]
     [ApiController]
     [Route("api/v1/extracts")]
     public sealed class ExtractsController : ControllerBase

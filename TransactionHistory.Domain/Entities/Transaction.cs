@@ -15,10 +15,10 @@ namespace TransactionHistory.Domain.Entities
         {
         }
 
-        public Transaction(Account account, Guid accountId, decimal amount, DateTime transactionDate, TransactionType transactionType)
+        public Transaction(Account account, decimal amount, DateTime transactionDate, TransactionType transactionType)
         {
             Account = account;
-            AccountId = accountId;
+            AccountId = account.Id;
             Amount = amount;
             TransactionDate = transactionDate;
             TransactionType = transactionType;

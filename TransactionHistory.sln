@@ -11,7 +11,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TransactionHistory.Core", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TransactionHistory.Infra", "TransactionHistory.Infra\TransactionHistory.Infra.csproj", "{638C9229-6507-4ED7-871F-6187842604FF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransactionHistory.Application", "TransactionHistory.Application\TransactionHistory.Application.csproj", "{A491219C-0E7B-43F6-A065-51A1F397451A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TransactionHistory.Application", "TransactionHistory.Application\TransactionHistory.Application.csproj", "{A491219C-0E7B-43F6-A065-51A1F397451A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{2A2AA2E0-F8A6-4A3B-B181-136D6C725FA5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransactionHistory.UnitTests", "TransactionHistory.UnitTests\TransactionHistory.UnitTests.csproj", "{BE0BDB00-684C-4FC5-A97B-2BB7B6CD6F55}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,9 +43,16 @@ Global
 		{A491219C-0E7B-43F6-A065-51A1F397451A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A491219C-0E7B-43F6-A065-51A1F397451A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A491219C-0E7B-43F6-A065-51A1F397451A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE0BDB00-684C-4FC5-A97B-2BB7B6CD6F55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE0BDB00-684C-4FC5-A97B-2BB7B6CD6F55}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE0BDB00-684C-4FC5-A97B-2BB7B6CD6F55}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE0BDB00-684C-4FC5-A97B-2BB7B6CD6F55}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BE0BDB00-684C-4FC5-A97B-2BB7B6CD6F55} = {2A2AA2E0-F8A6-4A3B-B181-136D6C725FA5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2F825EE7-90D8-4EFC-A8BE-46EF8B3463D3}

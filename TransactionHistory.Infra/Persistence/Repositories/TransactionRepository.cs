@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Diagnostics.CodeAnalysis;
 using TransactionHistory.Core.Data;
 using TransactionHistory.Core.Results;
 using TransactionHistory.Domain.Entities;
@@ -7,6 +8,7 @@ using TransactionHistory.Domain.Repository.Args;
 
 namespace TransactionHistory.Infra.Persistence.Repositories
 {
+    [ExcludeFromCodeCoverage]
     public sealed class TransactionRepository : ITransactionRepository
     {
         private readonly TransactionHistoryDbContext _dbContext;

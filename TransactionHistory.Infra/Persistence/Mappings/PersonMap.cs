@@ -1,9 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System.Diagnostics.CodeAnalysis;
 using TransactionHistory.Domain.Entities;
 
 namespace TransactionHistory.Infra.Persistence.Mappings
 {
+    [ExcludeFromCodeCoverage]
     public sealed class PersonMap : IEntityTypeConfiguration<Person>
     {
         public void Configure(EntityTypeBuilder<Person> builder)
