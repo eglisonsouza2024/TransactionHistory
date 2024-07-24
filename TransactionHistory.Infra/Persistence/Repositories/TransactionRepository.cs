@@ -35,7 +35,7 @@ namespace TransactionHistory.Infra.Persistence.Repositories
 
             var result = transactions
                 .AsNoTracking()
-                .Skip(getExtractArgs.Index)
+                .Skip(getExtractArgs.GetSkip())
                 .Take(getExtractArgs.Size);
 
             return new PageResultBuild<Transaction>()

@@ -6,5 +6,10 @@
         public int Index { get; set; }
         public DateTime DateFilter { get; set; }
         public Guid AccountId { get; set; }
+
+        public int GetSkip()
+        {
+            return (Index - 1) * Size;
+        }
     }
 }

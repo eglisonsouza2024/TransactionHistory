@@ -12,7 +12,7 @@
 
         public void SetTotalPages()
         {
-            TotalPages = TotalResults / PageSize;
+            TotalPages = (int)Math.Ceiling((double)TotalResults / PageSize);
         }
 
         public void SetHasNextPage()
