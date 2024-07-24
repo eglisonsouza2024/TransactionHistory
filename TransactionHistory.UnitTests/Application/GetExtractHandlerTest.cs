@@ -1,7 +1,6 @@
 ﻿using NSubstitute;
 using TransactionHistory.Application.Messages.Extracts.Handlers;
 using TransactionHistory.Application.Messages.Extracts.Models.Enums;
-using TransactionHistory.Application.Messages.Extracts.Models.Outputs;
 using TransactionHistory.Application.Messages.Extracts.Queries;
 using TransactionHistory.Core.Results;
 using TransactionHistory.Domain.Entities;
