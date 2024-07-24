@@ -23,7 +23,7 @@ namespace TransactionHistory.Api.Controllers.V1
         [HttpGet]
         [ProducesResponseType(typeof(CustomResult), (int)HttpStatusCode.OK)]
         [ProducesResponseType(typeof(CustomResult), (int)HttpStatusCode.BadRequest)]
-        public async Task<IActionResult> Get(FilterExtract dateFilter, Guid accountId, int size = 10, int index = 0)
+        public async Task<IActionResult> Get(FilterExtract dateFilter, Guid accountId, int size = 10, int index = 1)
         {
             var result = await _mediator.SendCommand(new GetExtractQuery(dateFilter, accountId, size, index));
 

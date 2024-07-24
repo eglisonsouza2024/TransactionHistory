@@ -1,0 +1,3 @@
+1 - Rodar o docker compose
+2 - Rodar no projeto o commando Update-Database para criação do banco de dados e as estruturas
+3 - Acessar o banco de dados e rodar os scripts no arquivo "script.txt"
